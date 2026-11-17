@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens — Hybrid + Premium
+   Dark, near-black / deep navy surfaces · warm white editorial content
+   · restrained electric-blue accent
+------------------------------------------------------------------ */
+@theme {
+  /* Typography */
+  --font-sans:
+    var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  /* Dark surfaces */
+  --color-ink-950: #05070f;
+  --color-ink-900: #080c18;
+  --color-ink-850: #0b1122;
+  --color-ink-800: #0f1730;
+  --color-ink-700: #18213c;
+  --color-ink-600: #232e4e;
+  --color-ink-400: #626d8d;
+  --color-ink-300: #8d97b4;
+  --color-ink-200: #b6bfd6;
+  --color-ink-100: #dde2ee;
+
+  /* Light surfaces — warm white and light grey */
+  --color-paper-50: #fbfaf7;
+  --color-paper-100: #f4f3ef;
+  --color-paper-200: #ebeae5;
+  --color-paper-300: #dedcd5;
+
+  /* Hairline rules (borders) */
+  --color-rule-light: #e4e2db;
+  --color-rule-dark: #1b2440;
+
+  /* Accent — restrained electric blue */
+  --color-accent-300: #9db6ff;
+  --color-accent-400: #5b86ff;
+  --color-accent-500: #2f66f0;
+  --color-accent-600: #1f4fd1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper-50);
+    color: var(--color-ink-900);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Anchor targets sit below the sticky navigation bar. */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-500);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: 3px;
+  }
+}
+
+/* Fine engineering grid used behind the dark hero. */
+@utility hero-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, #ffffff 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, #ffffff 6%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 88px 88px;
+  mask-image: radial-gradient(
+    ellipse 85% 75% at 50% 30%,
+    #000 25%,
+    transparent 100%
+  );
+}
+
+/* Data flow along the hero diagram connectors (70 = 5 × dash period of 14,
+   so the loop is seamless). Neutralised by the reduced-motion block below. */
+@keyframes hero-line-flow {
+  to {
+    stroke-dashoffset: -70;
+  }
+}
+
+@utility hero-line-flow {
+  animation: hero-line-flow 3.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
