@@ -1,48 +1,36 @@
-import Panel from "@/components/ui/Panel";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
+import ProjectCard from "@/components/sections/ProjectCard";
 import { projects } from "@/data/projects";
 
+/**
+ * Featured projects — exactly three, in verified order, alternating layout.
+ */
 export default function Projects() {
   return (
     <Section id="projects" tone="paper">
       <SectionHeading
         index="03"
         label="Projects"
-        title="Selected projects"
-        description="Three projects that reflect how I approach building reliable software."
+        title="Selected"
+        accent="projects"
+        description="Three projects that reflect my work across AI applications, full-stack web development, and serverless platforms."
       />
 
-      <Panel className="mt-12 overflow-hidden">
-        <ol>
-          {projects.map((project, index) => (
-            <li
-              key={project.slug}
-              className="border-b border-rule-light px-5 py-6 last:border-b-0 sm:px-7 sm:py-7"
-            >
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
-                <div className="flex items-baseline gap-4">
-                  <span
-                    className="font-mono text-[11px] text-accent-600"
-                    aria-hidden="true"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="text-lg font-semibold tracking-tight text-ink-950 sm:text-xl">
-                    {project.name}
-                  </h3>
-                </div>
-                <p className="text-sm text-ink-400 sm:max-w-[50%] sm:text-right">
-                  {project.category}
-                </p>
-              </div>
-              <p className="mt-3 pl-0 text-sm leading-relaxed text-ink-400 sm:pl-8">
-                {project.description}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </Panel>
+      <div className="mt-12 sm:mt-14 lg:mt-16">
+        {projects.map((project, index) => (
+          <div
+            key={project.slug}
+            className={
+              index === 0
+                ? ""
+                : "mt-16 border-t border-rule-light pt-16 sm:mt-20 sm:pt-20 lg:mt-24 lg:pt-24"
+            }
+          >
+            <ProjectCard project={project} reversed={index % 2 === 1} />
+          </div>
+        ))}
+      </div>
     </Section>
   );
 }
