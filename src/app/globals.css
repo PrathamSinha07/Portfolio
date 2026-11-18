@@ -13,6 +13,10 @@
   --font-mono:
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
     monospace;
+  /* Display serif — reserved for the italic accent words in section titles. */
+  --font-serif:
+    "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia,
+    "Times New Roman", serif;
 
   /* Dark surfaces */
   --color-ink-950: #05070f;
