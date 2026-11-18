@@ -4,13 +4,18 @@ import { motion, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 import Container from "@/components/ui/Container";
-import HeroVisual from "@/components/sections/HeroVisual";
+import HeroPortrait from "@/components/sections/HeroPortrait";
 import SocialIcon from "@/components/ui/SocialIcon";
 import { siteConfig } from "@/config/site";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-export default function Hero() {
+type HeroProps = {
+  /** Public path of the portrait photograph, or null while it is pending. */
+  portraitSrc?: string | null;
+};
+
+export default function Hero({ portraitSrc = null }: HeroProps) {
   const reduceMotion = useReducedMotion();
   const duration = reduceMotion ? 0 : 0.75;
 
@@ -38,7 +43,7 @@ export default function Hero() {
       <Container className="relative flex flex-1 flex-col">
         <div className="grid flex-1 items-center gap-12 py-14 sm:py-16 lg:grid-cols-12 lg:gap-8 lg:py-20">
           {/* Editorial copy */}
-          <div className="lg:col-span-7 lg:pr-6">
+          <div className="min-w-0 lg:col-span-7 lg:pr-6">
             <motion.p
               {...rise(0.05)}
               className="flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.35em] text-accent-300"
@@ -69,6 +74,12 @@ export default function Hero() {
                 aria-hidden="true"
               />
               {siteConfig.hero.role}
+            </motion.p>
+
+            <motion.p {...rise(0.3)} className="mt-5">
+              <span className="inline-flex items-center rounded-full border border-accent-400/40 bg-accent-500/10 px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-accent-300">
+                {siteConfig.positioning}
+              </span>
             </motion.p>
 
             <motion.p
@@ -131,10 +142,14 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Engineering visual — stacks below the copy on mobile. */}
-          <motion.div {...rise(0.5)} className="lg:col-span-5">
-            <HeroVisual />
-          </motion.div>
+          {/* Portrait plate — stacks below the copy on mobile. */}
+          <div className="flex min-w-0 justify-center lg:col-span-5 lg:justify-end">
+            <HeroPortrait
+              src={portraitSrc}
+              name={siteConfig.hero.name}
+              role={siteConfig.hero.role}
+            />
+          </div>
         </div>
 
         {/* Hero footer strip */}

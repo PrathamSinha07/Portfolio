@@ -26,7 +26,12 @@ export default function About() {
     <Section id="about" tone="paper">
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
         <motion.div {...reveal(0)} className="lg:col-span-4">
-          <SectionHeading index="01" label="About" title="A little about me." />
+          <SectionHeading
+            index="01"
+            label="About"
+            title="A little about"
+            accent="me."
+          />
         </motion.div>
 
         <motion.div
@@ -53,6 +58,20 @@ export default function About() {
               </div>
             ))}
           </dl>
+
+          <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.22em] text-accent-600">
+            Career interests
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {siteConfig.about.careers.map((career) => (
+              <li
+                key={career}
+                className="rounded-full border border-rule-light bg-white px-3.5 py-1.5 text-sm text-ink-700"
+              >
+                {career}
+              </li>
+            ))}
+          </ul>
         </motion.div>
       </div>
     </Section>
