@@ -12,8 +12,9 @@ export default function Contact() {
       <SectionHeading
         index="05"
         label="Contact"
-        title="Get in touch"
-        description="Open to Software Engineer and Java Full-Stack opportunities, collaborations, and interesting problems."
+        title="Get in"
+        accent="touch"
+        description="Open to Software Engineer, Java Developer, and AI Engineer opportunities, collaborations, and interesting problems."
       />
 
       <Panel className="mt-12 px-5 py-8 sm:px-8 sm:py-10">
@@ -32,7 +33,7 @@ export default function Contact() {
             className="h-5 w-5 shrink-0 text-accent-500 sm:h-6 sm:w-6"
             aria-hidden="true"
           />
-          <span className="break-words">{siteConfig.contact.email}</span>
+          <span className="min-w-0 wrap-anywhere">{siteConfig.contact.email}</span>
         </a>
 
         <div className="mt-8 flex items-center gap-3 border-t border-rule-light pt-6">

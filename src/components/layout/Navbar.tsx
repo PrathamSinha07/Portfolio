@@ -88,12 +88,16 @@ export default function Navbar() {
       <Container className="flex h-16 items-center justify-between gap-4 sm:h-[4.5rem]">
         <a
           href="#home"
-          className="flex shrink-0 items-center gap-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.18em] sm:text-sm sm:tracking-[0.2em]"
+          className="group flex shrink-0 items-center gap-3 text-[0.78rem] font-semibold uppercase tracking-[0.18em] sm:text-sm sm:tracking-[0.2em]"
         >
           <span
-            className="h-1.5 w-1.5 rounded-full bg-accent-500"
             aria-hidden="true"
-          />
+            className={`flex h-7 w-7 items-center justify-center border font-mono text-[10px] font-medium tracking-[0.04em] transition-colors duration-300 group-hover:border-accent-400 ${
+              dark ? "border-white/25 text-white" : "border-ink-950/25 text-ink-950"
+            }`}
+          >
+            PS
+          </span>
           <span className={dark ? "text-white" : "text-ink-950"}>
             {siteConfig.brand}
           </span>
@@ -127,13 +131,15 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={siteConfig.resume.href}
-            className={`hidden items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors lg:inline-flex ${resumeTone}`}
-          >
-            <Download className="h-3.5 w-3.5" aria-hidden="true" />
-            {siteConfig.resume.label}
-          </a>
+          {siteConfig.resume.href ? (
+            <a
+              href={siteConfig.resume.href}
+              className={`hidden items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors lg:inline-flex ${resumeTone}`}
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden="true" />
+              {siteConfig.resume.label}
+            </a>
+          ) : null}
 
           <button
             type="button"
@@ -199,14 +205,16 @@ export default function Navbar() {
                 })}
               </ul>
 
-              <a
-                href={siteConfig.resume.href}
-                onClick={() => setOpen(false)}
-                className={`mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-medium uppercase tracking-[0.14em] transition-colors ${resumeTone}`}
-              >
-                <Download className="h-3.5 w-3.5" aria-hidden="true" />
-                {siteConfig.resume.label}
-              </a>
+              {siteConfig.resume.href ? (
+                <a
+                  href={siteConfig.resume.href}
+                  onClick={() => setOpen(false)}
+                  className={`mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-medium uppercase tracking-[0.14em] transition-colors ${resumeTone}`}
+                >
+                  <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                  {siteConfig.resume.label}
+                </a>
+              ) : null}
             </Container>
           </motion.nav>
         ) : null}

@@ -12,11 +12,13 @@ export default function Footer() {
       <Container className="py-14 sm:py-16">
         <div className="flex flex-col gap-10 border-b border-white/[0.06] pb-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-md">
-            <p className="flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.2em]">
+            <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em]">
               <span
-                className="h-1.5 w-1.5 rounded-full bg-accent-500"
+                className="flex h-7 w-7 items-center justify-center border border-white/25 font-mono text-[10px] font-medium tracking-[0.04em]"
                 aria-hidden="true"
-              />
+              >
+                PS
+              </span>
               {siteConfig.brand}
             </p>
             <p className="mt-4 text-sm leading-relaxed text-ink-300">
