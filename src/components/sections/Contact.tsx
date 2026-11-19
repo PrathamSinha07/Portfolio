@@ -27,7 +27,7 @@ export default function Contact() {
 
         <a
           href={`mailto:${siteConfig.contact.email}`}
-          className="mt-8 inline-flex max-w-full items-center gap-3 text-xl font-semibold tracking-tight text-ink-950 transition-colors hover:text-accent-600 sm:text-3xl lg:text-4xl"
+          className="mt-8 inline-flex max-w-full items-center gap-2.5 text-[clamp(1.05rem,4.5vw,2.25rem)] font-semibold tracking-tight text-ink-950 transition-colors hover:text-accent-600 sm:gap-3"
         >
           <Mail
             className="h-5 w-5 shrink-0 text-accent-500 sm:h-6 sm:w-6"
