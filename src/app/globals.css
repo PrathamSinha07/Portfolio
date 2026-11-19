@@ -73,19 +73,24 @@
     outline: 2px solid var(--color-accent-600);
     outline-offset: 3px;
   }
+
+  /* The dark hero needs a brighter ring than the ivory page. */
+  #home :focus-visible {
+    outline-color: var(--color-accent-400);
+  }
 }
 
-/* Fine engineering grid used behind the hero. */
+/* Fine engineering grid used behind the dark hero — ivory lines at 5%. */
 @utility hero-grid {
   background-image:
     linear-gradient(
       to right,
-      color-mix(in srgb, #191813 5%, transparent) 1px,
+      color-mix(in srgb, #faf8f2 5%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      color-mix(in srgb, #191813 5%, transparent) 1px,
+      color-mix(in srgb, #faf8f2 5%, transparent) 1px,
       transparent 1px
     );
   background-size: 88px 88px;

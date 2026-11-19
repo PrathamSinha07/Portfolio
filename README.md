@@ -1,8 +1,9 @@
 # Pratham Sinha — Portfolio
 
 A single-page editorial portfolio for **Pratham Sinha — AI Engineer · Software
-Developer · AI Integration**. Warm ivory paper, charcoal typography, a
-restrained lime accent, large display type and a strict hairline grid.
+Developer · AI Integration**. A warm charcoal hero over warm ivory paper,
+charcoal typography, a restrained lime accent, large display type and a strict
+hairline grid.
 
 Built with **Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · Motion**.
 
@@ -10,7 +11,7 @@ Built with **Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · Motion**
 
 | # | Section | Source |
 | --- | --- | --- |
-| — | Hero — name, headline, status, CTAs, animated terminal | `src/components/sections/Hero.tsx` |
+| — | Hero — warm charcoal band: name, headline, status, CTAs, cursor spotlight, animated terminal | `src/components/sections/Hero.tsx` |
 | 01 | About | `src/components/sections/About.tsx` |
 | 02 | Featured projects (4, three distinct layouts) | `src/components/sections/Projects.tsx` |
 | 03 | Skills (6 categories, no proficiency levels) | `src/components/sections/Skills.tsx` |
@@ -78,8 +79,8 @@ SITE_URL=https://example.com npm run build
 Defined once in `src/app/globals.css`:
 
 - **Paper** `#faf8f2 → #ded9c9` — page surfaces
-- **Ink** `#191813 → #c7c4b4` — warm charcoal type scale (the footer is the one
-  deliberately dark surface)
+- **Ink** `#191813 → #c7c4b4` — warm charcoal type scale (the hero and footer
+  are the deliberately dark surfaces)
 - **Accent** `#d9f18f → #567a0d` — a restrained lime for rules, indices, links
   and the status marker
 - Hairline rules instead of pills and drop shadows; rectangular controls; the

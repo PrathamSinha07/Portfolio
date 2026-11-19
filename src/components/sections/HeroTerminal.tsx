@@ -50,7 +50,9 @@ export default function HeroTerminal() {
         className="pointer-events-none absolute -inset-6 -z-10 bg-[radial-gradient(60%_60%_at_50%_40%,rgba(146,189,0,0.16),transparent_70%)]"
       />
 
-      <div className="relative overflow-hidden border border-ink-950 bg-ink-950 shadow-[0_40px_80px_-56px_rgba(25,24,19,0.95)]">
+      {/* Inset plate on the dark hero: lifts a hair on hover, with a lime
+          border glow — no tilt, no drama. */}
+      <div className="relative overflow-hidden border border-white/10 bg-ink-950 shadow-[0_40px_80px_-56px_rgba(0,0,0,0.85)] transition-[transform,border-color,box-shadow] duration-300 hover:border-accent-400/40 hover:shadow-[0_48px_90px_-52px_rgba(0,0,0,0.95)] motion-safe:hover:-translate-y-1">
         {/* Window chrome */}
         <div className="flex items-center justify-between border-b border-rule-dark px-4 py-3">
           <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-300">
@@ -114,7 +116,7 @@ export default function HeroTerminal() {
         </div>
       </div>
 
-      <figcaption className="mt-3 flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-400">
+      <figcaption className="mt-3 flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-300">
         <span>Terminal</span>
         <span>Available for work</span>
       </figcaption>
