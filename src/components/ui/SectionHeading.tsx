@@ -4,6 +4,11 @@ type SectionHeadingProps = {
   /** Small uppercase eyebrow label, e.g. "About". */
   label?: string;
   title: string;
+  /**
+   * Optional trailing word set in the display serif italic — the recurring
+   * editorial accent that gives each section its own voice.
+   */
+  accent?: string;
   description?: string;
   /** "dark" is for use on the near-black surfaces. */
   tone?: "light" | "dark";
@@ -11,12 +16,14 @@ type SectionHeadingProps = {
 };
 
 /**
- * Editorial section heading: index + eyebrow rule, title, optional summary.
+ * Editorial section heading: index + eyebrow rule, title with a serif accent
+ * word, optional summary.
  */
 export default function SectionHeading({
   index,
   label,
   title,
+  accent,
   description,
   tone = "light",
   className = "",
@@ -27,6 +34,7 @@ export default function SectionHeading({
   const titleColor = isDark ? "text-white" : "text-ink-950";
   const descriptionColor = isDark ? "text-ink-300" : "text-ink-400";
   const ruleColor = isDark ? "bg-accent-400" : "bg-accent-500";
+  const accentColor = isDark ? "text-accent-300" : "text-accent-600";
 
   const eyebrow = [index, label].filter(Boolean).join(" — ");
 
@@ -42,14 +50,24 @@ export default function SectionHeading({
       ) : null}
 
       <h2
-        className={`mt-5 text-3xl font-semibold tracking-[-0.03em] text-balance sm:text-4xl lg:text-[2.75rem] ${titleColor}`}
+        className={`mt-5 text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-balance ${titleColor}`}
       >
         {title}
+        {accent ? (
+          <>
+            {" "}
+            <em
+              className={`font-serif text-[1.06em] font-normal italic tracking-[-0.015em] ${accentColor}`}
+            >
+              {accent}
+            </em>
+          </>
+        ) : null}
       </h2>
 
       {description ? (
         <p
-          className={`mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${descriptionColor}`}
+          className={`mt-5 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg ${descriptionColor}`}
         >
           {description}
         </p>

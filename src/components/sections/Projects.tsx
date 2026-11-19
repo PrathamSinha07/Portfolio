@@ -4,17 +4,17 @@ import ProjectCard from "@/components/sections/ProjectCard";
 import { projects } from "@/data/projects";
 
 /**
- * Featured projects — exactly three, in verified order, alternating layout.
+ * Featured projects — four entries, each with its own editorial treatment.
  */
 export default function Projects() {
   return (
     <Section id="projects" tone="paper">
       <SectionHeading
-        index="03"
+        index="02"
         label="Projects"
-        title="Selected"
+        title="Featured"
         accent="projects"
-        description="Three projects that reflect my work across AI applications, full-stack web development, and serverless platforms."
+        description="Four builds across AI applications, backend systems, full-stack platforms and data analytics — with the repository and live deployment for each."
       />
 
       <div className="mt-12 sm:mt-14 lg:mt-16">

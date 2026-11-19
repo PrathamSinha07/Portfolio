@@ -60,15 +60,15 @@ export default function About() {
           </dl>
 
           <p className="mt-9 font-mono text-[11px] uppercase tracking-[0.22em] text-accent-600">
-            Career interests
+            Interested in
           </p>
           <ul className="mt-3 flex flex-wrap gap-2">
-            {siteConfig.about.careers.map((career) => (
+            {siteConfig.about.interests.map((interest) => (
               <li
-                key={career}
-                className="rounded-full border border-rule-light bg-white px-3.5 py-1.5 text-sm text-ink-700"
+                key={interest}
+                className="border border-rule-light bg-white px-3.5 py-1.5 text-sm text-ink-700"
               >
-                {career}
+                {interest}
               </li>
             ))}
           </ul>

@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   Design tokens — Hybrid + Premium
-   Dark, near-black / deep navy surfaces · warm white editorial content
-   · restrained electric-blue accent
+   Design tokens — Premium editorial
+   Warm ivory surfaces · dark charcoal typography · restrained lime accent
 ------------------------------------------------------------------ */
 @theme {
   /* Typography */
@@ -18,33 +17,33 @@
     "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia,
     "Times New Roman", serif;
 
-  /* Dark surfaces */
-  --color-ink-950: #05070f;
-  --color-ink-900: #080c18;
-  --color-ink-850: #0b1122;
-  --color-ink-800: #0f1730;
-  --color-ink-700: #18213c;
-  --color-ink-600: #232e4e;
-  --color-ink-400: #626d8d;
-  --color-ink-300: #8d97b4;
-  --color-ink-200: #b6bfd6;
-  --color-ink-100: #dde2ee;
+  /* Charcoal ink — warm near-black scale */
+  --color-ink-950: #191813;
+  --color-ink-900: #201f19;
+  --color-ink-850: #26251e;
+  --color-ink-800: #2e2d25;
+  --color-ink-700: #414034;
+  --color-ink-600: #55534a;
+  --color-ink-400: #6f6c5e;
+  --color-ink-300: #8f8c7d;
+  --color-ink-200: #c7c4b4;
+  --color-ink-100: #e6e3d5;
 
-  /* Light surfaces — warm white and light grey */
-  --color-paper-50: #fbfaf7;
-  --color-paper-100: #f4f3ef;
-  --color-paper-200: #ebeae5;
-  --color-paper-300: #dedcd5;
+  /* Warm ivory surfaces */
+  --color-paper-50: #faf8f2;
+  --color-paper-100: #f4f1e8;
+  --color-paper-200: #ece8db;
+  --color-paper-300: #ded9c9;
 
   /* Hairline rules (borders) */
-  --color-rule-light: #e4e2db;
-  --color-rule-dark: #1b2440;
+  --color-rule-light: #e3dfd1;
+  --color-rule-dark: #33322a;
 
-  /* Accent — restrained electric blue */
-  --color-accent-300: #9db6ff;
-  --color-accent-400: #5b86ff;
-  --color-accent-500: #2f66f0;
-  --color-accent-600: #1f4fd1;
+  /* Accent — restrained lime */
+  --color-accent-300: #d9f18f;
+  --color-accent-400: #bde44e;
+  --color-accent-500: #92bd00;
+  --color-accent-600: #567a0d;
 }
 
 @layer base {
@@ -67,46 +66,50 @@
 
   ::selection {
     background-color: var(--color-accent-500);
-    color: #ffffff;
+    color: var(--color-ink-950);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent-500);
+    outline: 2px solid var(--color-accent-600);
     outline-offset: 3px;
   }
 }
 
-/* Fine engineering grid used behind the dark hero. */
+/* Fine engineering grid used behind the hero. */
 @utility hero-grid {
   background-image:
     linear-gradient(
       to right,
-      color-mix(in srgb, #ffffff 6%, transparent) 1px,
+      color-mix(in srgb, #191813 5%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      color-mix(in srgb, #ffffff 6%, transparent) 1px,
+      color-mix(in srgb, #191813 5%, transparent) 1px,
       transparent 1px
     );
   background-size: 88px 88px;
   mask-image: radial-gradient(
-    ellipse 85% 75% at 50% 30%,
+    ellipse 90% 80% at 60% 35%,
     #000 25%,
     transparent 100%
   );
 }
 
-/* Data flow along the hero diagram connectors (70 = 5 × dash period of 14,
-   so the loop is seamless). Neutralised by the reduced-motion block below. */
-@keyframes hero-line-flow {
-  to {
-    stroke-dashoffset: -70;
+/* Blinking caret inside the hero terminal. */
+@keyframes terminal-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
   }
 }
 
-@utility hero-line-flow {
-  animation: hero-line-flow 3.4s linear infinite;
+@utility terminal-caret {
+  animation: terminal-caret 1.1s steps(1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -19,120 +19,120 @@ export type Fact = {
 export type SiteConfig = {
   name: string;
   brand: string;
-  role: string;
-  tagline: string;
+  /** Professional positioning — shown as the hero eyebrow. */
+  positioning: string;
   meta: {
     title: string;
     description: string;
     keywords: string[];
   };
   nav: NavItem[];
+  /** Verified personal profiles. */
   socials: SocialLink[];
-  /** Placeholder until the real resume file is added to /public. */
   resume: {
     label: string;
     href: string;
+    fileName: string;
   };
   contact: {
-    /** Placeholder address — replace with the real one before launch. */
     email: string;
-    availability: string;
+    headline: string;
+    subheading: string;
   };
   hero: {
-    eyebrow: string;
     name: string;
-    role: string;
+    headline: string[];
     summary: string;
-    /** Short supporting statement beneath the main introduction. */
-    supporting: string;
+    status: string;
     primaryCta: { label: string; href: string };
     secondaryCta: { label: string; href: string };
-    focusAreas: string[];
   };
   about: {
     intro: string;
-    /** Second paragraph — the working approach. */
     approach: string;
     facts: Fact[];
+    interests: string[];
+  };
+  footer: {
+    closing: string;
   };
 };
 
 export const siteConfig: SiteConfig = {
   name: "Pratham Sinha",
   brand: "Pratham Sinha",
-  role: "Software Engineer",
-  tagline:
-    "I build practical software solutions using Java, modern web technologies, cloud services, and AI.",
+  positioning: "AI Engineer · Software Developer · AI Integration",
   meta: {
-    title: "Pratham Sinha — Software Engineer",
+    title: "Pratham Sinha — AI Engineer & Software Developer",
     description:
-      "Portfolio of Pratham Sinha, a Software Engineer building practical products with Java, Spring Boot, Next.js, cloud services, and AI.",
+      "Portfolio of Pratham Sinha, an AI engineer and software developer building practical applications, backend systems and AI-powered experiences.",
     keywords: [
       "Pratham Sinha",
-      "Software Engineer",
+      "AI Engineer",
+      "Software Developer",
+      "AI Integration",
       "Java Developer",
-      "Full-Stack Developer",
       "Spring Boot",
-      "Next.js",
+      "Generative AI",
       "Portfolio",
     ],
   },
   nav: [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ],
   socials: [
-    // Placeholder handles — replace with the real profiles before launch.
-    { id: "github", label: "GitHub", href: "https://github.com/prathamsinha" },
+    { id: "github", label: "GitHub", href: "https://github.com/PrathamSinha07" },
     {
       id: "linkedin",
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/prathamsinha",
+      href: "https://www.linkedin.com/in/prathamsinha04/",
     },
   ],
   resume: {
     label: "Resume",
-    // Placeholder link — swap for /resume.pdf once the file is added to /public.
-    href: "#",
+    href: "/resume/Pratham-Sinha-Resume.pdf",
+    fileName: "Pratham-Sinha-Resume.pdf",
   },
   contact: {
-    // Placeholder address — replace before launch.
-    email: "pratham.sinha@example.com",
-    availability: "Open to Software Engineer and Java Full-Stack roles.",
+    email: "pratham.sinha2002@gmail.com",
+    headline: "Have an interesting problem to solve?",
+    subheading:
+      "I'm open to opportunities where I can learn, contribute and build.",
   },
   hero: {
-    eyebrow: "Hello, I'm",
     name: "Pratham Sinha",
-    role: "Software Engineer",
+    headline: ["Building useful software.", "Exploring intelligent systems."],
     summary:
-      "I build practical software solutions using Java, modern web technologies, cloud services, and AI — turning ideas into reliable digital products.",
-    supporting:
-      "Focused on backend engineering, full-stack development, and solving real-world problems through technology.",
-    primaryCta: { label: "Explore My Work", href: "#projects" },
-    secondaryCta: { label: "Let's Connect", href: "#contact" },
-    focusAreas: [
-      "Backend Engineering",
-      "Full-Stack Development",
-      "AI Integration",
-    ],
+      "AI & Software Developer building practical applications, backend systems and AI-powered experiences.",
+    status: "Open to opportunities",
+    primaryCta: { label: "View Projects", href: "#projects" },
+    secondaryCta: { label: "Contact", href: "#contact" },
   },
   about: {
     intro:
-      "I'm a B.Tech graduate in Electronics and Communication Engineering from MIT-WPU, Pune. I enjoy solving problems and building practical software applications across backend development, full-stack engineering, and AI integration.",
+      "I'm an engineering graduate with an interest in software development and AI integration. I've worked on projects spanning AI-powered applications, backend systems, full-stack development and data analytics.",
     approach:
-      "My approach is to understand the problem first, design a practical solution, and build software that is reliable, maintainable, and useful.",
+      "I enjoy understanding problems, experimenting with technology and building solutions that are practical and functional.",
     facts: [
       {
         label: "Education",
         value: "B.Tech — Electronics and Communication Engineering",
       },
       { label: "University", value: "MIT World Peace University, Pune" },
-      { label: "Graduation", value: "2026" },
-      { label: "Primary focus", value: "Software Engineering" },
+      { label: "Graduation", value: "July 2026" },
+      { label: "Experience", value: "Intern, Canspirit.ai — 2025" },
     ],
+    interests: [
+      "Artificial intelligence",
+      "Software engineering",
+      "Application development",
+    ],
+  },
+  footer: {
+    closing: "Designed and built with care — always learning, always building.",
   },
 };

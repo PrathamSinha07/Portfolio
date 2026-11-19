@@ -1,0 +1,12 @@
+# Normalize line endings for text; keep binaries byte-exact.
+* text=auto
+
+# Binary assets - never line-convert (protects PDFs and images from CRLF corruption).
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

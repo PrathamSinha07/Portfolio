@@ -1,21 +1,19 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 
 import Container from "@/components/ui/Container";
-import HeroPortrait from "@/components/sections/HeroPortrait";
+import HeroTerminal from "@/components/sections/HeroTerminal";
 import SocialIcon from "@/components/ui/SocialIcon";
 import { siteConfig } from "@/config/site";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-type HeroProps = {
-  /** Public path of the portrait photograph, or null while it is pending. */
-  portraitSrc?: string | null;
-};
+/** Practice areas — the same domains the rest of the page documents. */
+const FOCUS_AREAS = ["Generative AI", "Backend systems", "Full-stack web"];
 
-export default function Hero({ portraitSrc = null }: HeroProps) {
+export default function Hero() {
   const reduceMotion = useReducedMotion();
   const duration = reduceMotion ? 0 : 0.75;
 
@@ -28,140 +26,140 @@ export default function Hero({ portraitSrc = null }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-ink-950 text-white sm:min-h-[calc(100svh-4.5rem)]"
+      className="relative isolate overflow-hidden border-b border-rule-light bg-paper-50"
     >
-      {/* Fine engineering grid + a single restrained glow. */}
+      {/* Fine engineering grid behind the editorial copy. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 hero-grid"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-32 right-[-15%] h-[34rem] w-[34rem] rounded-full bg-accent-500/15 blur-[140px]"
-      />
 
-      <Container className="relative flex flex-1 flex-col">
-        <div className="grid flex-1 items-center gap-12 py-14 sm:py-16 lg:grid-cols-12 lg:gap-8 lg:py-20">
+      <Container className="relative">
+        <div className="grid gap-12 pb-12 pt-14 sm:pt-16 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pb-16 lg:pt-24">
           {/* Editorial copy */}
-          <div className="min-w-0 lg:col-span-7 lg:pr-6">
+          <div className="min-w-0 lg:col-span-7 lg:pr-8">
             <motion.p
               {...rise(0.05)}
-              className="flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.35em] text-accent-300"
+              className="flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-accent-600"
             >
-              <span
-                className="h-px w-10 bg-accent-400"
-                aria-hidden="true"
-              />
-              {siteConfig.hero.eyebrow}
+              <span className="h-px w-10 bg-accent-500" aria-hidden="true" />
+              {siteConfig.positioning}
             </motion.p>
 
             <motion.h1
               {...rise(0.15)}
-              className="mt-7 text-[clamp(2.75rem,8vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-balance"
+              className="mt-7 text-[clamp(2.75rem,9.5vw,6.5rem)] font-semibold uppercase leading-[0.88] tracking-[-0.045em]"
             >
-              {siteConfig.hero.name}
-              <span className="text-accent-400" aria-hidden="true">
-                .
+              <span className="block">Pratham</span>
+              <span className="block">
+                Sinha
+                <span className="text-accent-500" aria-hidden="true">
+                  .
+                </span>
               </span>
             </motion.h1>
 
             <motion.p
-              {...rise(0.25)}
-              className="mt-6 flex items-center gap-4 text-base font-medium tracking-tight text-ink-100 sm:text-lg"
+              {...rise(0.3)}
+              className="mt-8 max-w-2xl text-[clamp(1.3rem,2.4vw,1.95rem)] leading-[1.25] tracking-[-0.02em] text-ink-800"
             >
-              <span
-                className="h-px w-10 shrink-0 bg-accent-400 sm:w-14"
-                aria-hidden="true"
-              />
-              {siteConfig.hero.role}
-            </motion.p>
-
-            <motion.p {...rise(0.3)} className="mt-5">
-              <span className="inline-flex items-center rounded-full border border-accent-400/40 bg-accent-500/10 px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-accent-300">
-                {siteConfig.positioning}
+              <span className="block">{siteConfig.hero.headline[0]}</span>
+              <span className="block font-serif italic text-ink-600">
+                {siteConfig.hero.headline[1]}
               </span>
             </motion.p>
 
             <motion.p
-              {...rise(0.35)}
-              className="mt-7 max-w-xl text-base leading-relaxed text-ink-200 sm:text-lg"
+              {...rise(0.4)}
+              className="mt-6 max-w-xl text-base leading-relaxed text-ink-600 sm:text-lg"
             >
               {siteConfig.hero.summary}
             </motion.p>
 
             <motion.p
-              {...rise(0.45)}
-              className="mt-5 max-w-xl border-l-2 border-accent-400/50 pl-4 text-sm leading-relaxed text-ink-300 sm:text-base"
+              {...rise(0.5)}
+              className="mt-7 flex items-center gap-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-ink-700"
             >
-              {siteConfig.hero.supporting}
+              <span
+                className="motion-safe:animate-pulse h-2 w-2 rounded-full bg-accent-500"
+                aria-hidden="true"
+              />
+              {siteConfig.hero.status}
             </motion.p>
 
-            <motion.div {...rise(0.55)} className="mt-10 flex flex-wrap gap-3">
+            <motion.div {...rise(0.6)} className="mt-9 flex flex-wrap gap-3">
               <a
                 href={siteConfig.hero.primaryCta.href}
-                className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3.5 text-sm font-medium text-white shadow-[0_16px_40px_-20px_rgba(47,102,240,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-600 sm:px-7"
+                className="group inline-flex items-center gap-2.5 border border-ink-950 bg-ink-950 px-6 py-3.5 text-sm font-medium text-paper-50 transition-colors duration-300 hover:border-accent-500 hover:bg-accent-500 hover:text-ink-950 sm:px-7"
               >
                 {siteConfig.hero.primaryCta.label}
                 <ArrowUpRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="h-4 w-4 motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
                   aria-hidden="true"
                 />
               </a>
               <a
                 href={siteConfig.hero.secondaryCta.href}
-                className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/45 hover:bg-white/5 sm:px-7"
+                className="group inline-flex items-center gap-2.5 border border-ink-950/25 px-6 py-3.5 text-sm font-medium text-ink-950 transition-colors duration-300 hover:border-ink-950 hover:bg-ink-950 hover:text-paper-50 sm:px-7"
               >
                 {siteConfig.hero.secondaryCta.label}
                 <ArrowUpRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="h-4 w-4 motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
                   aria-hidden="true"
                 />
               </a>
             </motion.div>
 
-            <motion.div {...rise(0.65)} className="mt-9 flex items-center gap-3">
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-400">
-                Find me on
-              </span>
-              <span
-                className="h-px w-6 bg-rule-dark"
-                aria-hidden="true"
-              />
+            {/* Profiles + resume, kept as text links rather than badges. */}
+            <motion.nav
+              {...rise(0.7)}
+              aria-label="Profiles"
+              className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-rule-light pt-6"
+            >
               {siteConfig.socials.map((social) => (
                 <a
                   key={social.id}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-ink-200 transition-colors hover:border-accent-400 hover:text-white"
+                  className="group/link inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-ink-700 transition-colors duration-300 hover:text-accent-600"
                 >
                   <SocialIcon id={social.id} className="h-4 w-4" />
+                  {social.label}
+                  <ArrowUpRight
+                    className="h-3.5 w-3.5 opacity-60 motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover/link:-translate-y-0.5 motion-safe:group-hover/link:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </a>
               ))}
-            </motion.div>
+
+              <a
+                href={siteConfig.resume.href}
+                download={siteConfig.resume.fileName}
+                className="group/link inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-ink-700 transition-colors duration-300 hover:text-accent-600"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                {siteConfig.resume.label}
+              </a>
+            </motion.nav>
           </div>
 
-          {/* Portrait plate — stacks below the copy on mobile. */}
-          <div className="flex min-w-0 justify-center lg:col-span-5 lg:justify-end">
-            <HeroPortrait
-              src={portraitSrc}
-              name={siteConfig.hero.name}
-              role={siteConfig.hero.role}
-            />
+          {/* Animated visual — stacks below the copy on mobile. */}
+          <div className="min-w-0 lg:col-span-5">
+            <HeroTerminal />
           </div>
         </div>
 
         {/* Hero footer strip */}
         <motion.div
-          {...rise(0.8)}
-          className="flex flex-col gap-4 border-t border-white/10 py-6 sm:flex-row sm:items-center sm:justify-between"
+          {...rise(0.85)}
+          className="flex flex-col gap-4 border-t border-rule-light py-6 sm:flex-row sm:items-center sm:justify-between"
         >
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {siteConfig.hero.focusAreas.map((area) => (
+            {FOCUS_AREAS.map((area) => (
               <li
                 key={area}
-                className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-300"
+                className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-400"
               >
                 {area}
               </li>
@@ -170,11 +168,11 @@ export default function Hero({ portraitSrc = null }: HeroProps) {
 
           <a
             href="#about"
-            className="group inline-flex w-fit items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-300 transition-colors hover:text-white"
+            className="group inline-flex w-fit items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-400 transition-colors duration-300 hover:text-ink-950"
           >
             Scroll
             <ArrowDown
-              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5"
+              className="h-3.5 w-3.5 motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:translate-y-0.5"
               aria-hidden="true"
             />
           </a>

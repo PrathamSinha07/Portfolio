@@ -1,49 +1,86 @@
+export type SkillIcon =
+  | "code"
+  | "sparkles"
+  | "brain"
+  | "server"
+  | "database"
+  | "cloud";
+
 export type SkillCategory = {
   id: string;
   label: string;
+  /** Restrained category glyph — rendered from a small inline icon set. */
+  icon: SkillIcon;
+  /** AI and backend categories are visually prominent. */
+  emphasis?: boolean;
   /** Plain technology names — no proficiency levels are implied. */
   skills: string[];
 };
 
 /**
- * Initial data foundation. Visual treatment is applied in a later milestone.
+ * Centralised skills data. Display order is the editorial order.
+ * No percentages, ratings or experience levels are recorded anywhere.
  */
 export const skillCategories: SkillCategory[] = [
   {
     id: "programming",
     label: "Programming",
-    skills: ["Java", "JavaScript", "SQL"],
+    icon: "code",
+    skills: ["Java", "JavaScript", "SQL", "HTML", "CSS"],
   },
   {
-    id: "backend",
-    label: "Backend",
-    skills: ["Spring Boot", "REST APIs", "Spring Data JPA"],
-  },
-  {
-    id: "frontend",
-    label: "Frontend",
+    id: "genai-llms",
+    label: "Generative AI and LLMs",
+    icon: "sparkles",
+    emphasis: true,
     skills: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
+      "Large Language Models (LLMs)",
+      "Generative AI",
+      "Prompt Engineering",
+      "Gemini API",
+      "Multimodal AI",
+      "AI Application Integration",
     ],
   },
   {
-    id: "database",
-    label: "Database",
-    skills: ["PostgreSQL", "DynamoDB"],
+    id: "ai-concepts",
+    label: "AI Concepts",
+    icon: "brain",
+    emphasis: true,
+    skills: [
+      "Retrieval-Augmented Generation (RAG)",
+      "Embeddings",
+      "Semantic Search",
+      "Model Context Protocol (MCP)",
+      "AI Agents",
+      "Machine Learning Fundamentals",
+    ],
+  },
+  {
+    id: "backend",
+    label: "Backend Development",
+    icon: "server",
+    emphasis: true,
+    skills: ["Spring Boot", "Spring Data JPA", "RESTful APIs", "API Integration"],
+  },
+  {
+    id: "databases",
+    label: "Databases",
+    icon: "database",
+    skills: ["PostgreSQL", "MySQL", "DynamoDB"],
   },
   {
     id: "cloud-tools",
-    label: "Cloud and Tools",
-    skills: ["AWS", "Docker", "Git", "GitHub", "Postman"],
-  },
-  {
-    id: "ai",
-    label: "AI",
-    skills: ["Gemini API", "LLM Integration", "Prompt Engineering"],
+    label: "Cloud and Developer Tools",
+    icon: "cloud",
+    skills: [
+      "AWS Lambda",
+      "API Gateway",
+      "Firebase",
+      "Git",
+      "GitHub",
+      "Maven",
+      "Postman",
+    ],
   },
 ];
